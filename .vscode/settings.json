@@ -1,0 +1,5 @@
+{
+    "go.toolsEnvVars": {
+        "GOTOOLCHAIN": "1.24.3"
+    }
+}

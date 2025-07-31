@@ -35,7 +35,10 @@ COPY --from=build2 /build/admin /apps/admin/
 COPY --from=build2 /flygoose/cmd/admin/admin-config.yaml /apps/admin/
 
 RUN chown -R www /apps/flygoose /apps/admin
-
+Model(&models.Site{})  // 指定操作模型
+.Where("status=?", models.SiteStatusOnline)  // 筛选在线状态站点
+.Order("status desc , id desc")  // 按状态和ID降序
+.Limit(1).Offset(0)  // 取第一条记录
 USER www
 
 # admin api
